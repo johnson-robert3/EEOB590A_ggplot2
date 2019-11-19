@@ -178,3 +178,16 @@ p1 +
    )
 
 
+# Add a non-data element to the plotting region
+windows()
+p1 +
+   # add text labels to the map
+   annotate("text", x = 9, y = 38,
+            label = "Sardegna", fontface="italic") +
+   annotate("text", x = 14, y = 36,
+            label = "Sicilia", fontface="bold") +
+   # add lines to the map
+   annotate("segment", x = 8, xend = 15, y = 43, yend = 45, size=2) +
+   # add a box around Sardegna
+   annotate("rect", xmin = 8, xmax = 10, ymin = 38.5, ymax = 41.5,
+            color="black", fill=NA)
