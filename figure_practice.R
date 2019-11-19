@@ -209,7 +209,7 @@ map_italy =
                 color = "cornflowerblue", fill = "gray60") +
    coord_quickmap() +
    theme_classic() +
-   theme(panel.border = element_rect(fill=NA, color="black"))
+   theme(panel.border = element_rect(fill = NA, color = "black"))
 
 # Map of France
 france = map_data("france")
@@ -220,12 +220,26 @@ map_france =
                 color = "cornflowerblue", fill = "gray60") +
    coord_quickmap() +
    theme_classic() +
-   theme(panel.border = element_rect(fill=NA, color="black"))
+   theme(panel.border = element_rect(fill = NA, color = "black"))
 
 
 # combine the figures
 windows(height=4, width=8)
 plot_grid(map_italy, map_france,
           # add subplot labels to the upperleft corners
-          labels="auto")
+          labels = "auto")
+
+
+#---
+# Adding a figure inset
+#---
+
+# functions also from the 'cowplot' package
+
+windows()
+# add a drawing layer to a plot region
+ggdraw(map_italy) +
+   # add the second plot on top of the first
+   # all values are a proportion (0 to 1) of the plotting canvas
+   draw_plot(map_france, x = 0.2, y = 0.1, height = 0.3, width = 0.3)
 
