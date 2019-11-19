@@ -17,11 +17,13 @@ library(maps)        # map data
 library(mapdata)     # additional hi-res map data
 
 
+#---
 # Italy map
 italy = map_data("italy")
 
 # data
 sites = read_csv("example_data.csv")
+#---
 
 
 # Manually change colors used for data point locations
@@ -83,4 +85,38 @@ ggplot() +
                       labels = c("italy", "sardinia", "sicily")) +
    theme_classic()
 
+
+# Color the data points by their value rather than location
+windows()
+ggplot() +
+   # map
+   geom_polygon(data = italy,
+                aes(x = long, y = lat, group = group),
+                fill = "gray60") +
+   coord_quickmap() +
+   # data points
+   geom_point(data = sites,
+              aes(x = long, y = lat, color = value),
+              size=3) +
+   theme_classic()
+
+
+# Manually alter the color gradient
+windows()
+ggplot() +
+   # map
+   geom_polygon(data = italy,
+                aes(x = long, y = lat, group = group),
+                fill = "gray60") +
+   coord_quickmap() +
+   # data points
+   geom_point(data = sites,
+              aes(x = long, y = lat, color = value),
+              size=3) +
+   # manual color gradient
+   scale_color_gradient(breaks = c(0, 25, 50),
+                        limits = c(0, 50),
+                        low = "firebrick2", high = "dodgerblue4",
+                        name = "Tree density") +
+   theme_classic()
 
