@@ -120,3 +120,61 @@ ggplot() +
                         name = "Tree density") +
    theme_classic()
 
+
+#---
+# Changing visual aspects of plots
+#---
+
+### Display of information (data or text)
+# "geom_", "scale_", "labs()"
+
+### Visual aesthetics of non-data components
+# theme()
+
+### Adding non-data components to the plotting area
+# annotate()
+
+
+###
+# Create a map of Italy, with data points, for which we will change/add components
+p1 = ggplot() +
+   # map
+   geom_polygon(data = italy,
+                aes(x = long, y = lat, group = group),
+                fill = "gray60") +
+   coord_quickmap() +
+   # data points
+   geom_point(data = sites,
+              aes(x = long, y = lat, color = value),
+              size=3) +
+   # manual color gradient
+   scale_color_gradient(breaks = c(0, 25, 50),
+                        limits = c(0, 50),
+                        low = "firebrick2", high = "dodgerblue4",
+                        name = "Tree density") +
+   theme_classic()
+###
+
+
+# 
+windows()
+p1 +
+   # axis labels
+   labs(x = "Longitude",
+        y = "Latitude") +
+   # axis tick mark placement
+   scale_x_continuous(breaks = seq(8, 18, 2)) +
+   scale_y_continuous(breaks = seq(35, 47, 2)) +
+   # visual aspects of non-data components
+   theme(panel.border = element_rect(fill=NA, color="black"),   # add a rectangle around the plotting area
+         # increase the size of axis labels
+         axis.title = element_text(size=12),
+         # make x-axis bold and add some padding
+         axis.title.x = element_text(face="bold", margin = margin(t=0.5, b=0, r=0, l=0, unit="line")),
+         # increase size of y-axis tick labels
+         axis.text.y = element_text(size=15),
+         # increase size of x-axis tick marks
+         axis.ticks.length.x = unit(3, "mm")
+   )
+
+
