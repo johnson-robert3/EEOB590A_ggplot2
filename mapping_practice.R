@@ -1,6 +1,8 @@
-# Script for making maps in R and learning additional ggplot2 functionality
+#---
+# Script for making simple maps in R 
 # For EEOB 590A course, Fall 2019
 # by Robert Johnson
+#---
 
 
 # load packages
@@ -92,3 +94,18 @@ ggplot() +
               aes(x = long, y = lat),
               size=3) +
    theme_classic()
+
+
+# Color data points by location
+windows()
+ggplot() +
+   geom_polygon(data = italy,
+                aes(x = long, y = lat, group = group),
+                fill = "gray60") +
+   coord_quickmap() +
+   geom_point(data = sites,
+              aes(x = long, y = lat, color = location),
+              size=3) +
+   theme_classic()
+
+
