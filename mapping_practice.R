@@ -7,7 +7,6 @@
 
 # load packages
 library(tidyverse)   # the entire tidyverse (includes ggplot2)
-library(cowplot)     # package for combining figures
 library(maps)        # map data
 library(mapdata)     # additional hi-res map data
 
