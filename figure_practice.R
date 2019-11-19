@@ -191,3 +191,41 @@ p1 +
    # add a box around Sardegna
    annotate("rect", xmin = 8, xmax = 10, ymin = 38.5, ymax = 41.5,
             color="black", fill=NA)
+
+
+#---
+# Making multipanel figures
+#---
+
+# the 'cowplot' package adds functions to plot multiple figures together
+
+# first make two figures
+
+# Map of Italy
+map_italy =
+   ggplot() +
+   geom_polygon(data = italy,
+                aes(x = long, y = lat, group = group),
+                color = "cornflowerblue", fill = "gray60") +
+   coord_quickmap() +
+   theme_classic() +
+   theme(panel.border = element_rect(fill=NA, color="black"))
+
+# Map of France
+france = map_data("france")
+map_france = 
+   ggplot() +
+   geom_polygon(data = france,
+                aes(x = long, y = lat, group = group),
+                color = "cornflowerblue", fill = "gray60") +
+   coord_quickmap() +
+   theme_classic() +
+   theme(panel.border = element_rect(fill=NA, color="black"))
+
+
+# combine the figures
+windows(height=4, width=8)
+plot_grid(map_italy, map_france,
+          # add subplot labels to the upperleft corners
+          labels="auto")
+
