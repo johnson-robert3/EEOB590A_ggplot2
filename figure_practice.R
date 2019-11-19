@@ -1,6 +1,6 @@
 #---
 # Script for changing visual aesthetics of figures with ggplot2
-# # For EEOB 590A course, Fall 2019
+# For EEOB 590A course, Fall 2019
 # by Robert Johnson
 #---
 
