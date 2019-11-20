@@ -1,6 +1,6 @@
 # Johnson_Graphics
-Mapping and other options with ggplot2
-
+Mapping and other options with ggplot2.
+Guest workshop for EEOB590A course (Data Science in R), fall 2019.
 
 ### Some helpful resources
 
