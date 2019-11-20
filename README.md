@@ -2,7 +2,7 @@
 Mapping and other options with ggplot2
 
 
-Some helpful resources.
+### Some helpful resources
 
 Link to the ggplot2 chapter of the "R for Data Science" book:
 https://r4ds.had.co.nz/data-visualisation.html
